@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15C48a" minimumToolsVersion="Automatic">
+    <entity name="Recipe" representedClassName=".PPRRecipeMO" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <attribute name="serves" attributeType="Integer 16" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" defaultValueString="Meat" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="recipe" inverseEntity="RecipeIngredient" indexed="YES" syncable="YES"/>
+        <fetchedProperty name="Test" optional="YES" transient="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Type" predicateString="name == $FETCH_SOURCE.name"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="RecipeIngredient" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <attribute name="quantity" attributeType="Integer 16" minValueString="0" defaultValueString="1" syncable="YES"/>
+        <attribute name="unitOfMeasure" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <relationship name="recipe" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Type" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+    </entity>
+    <fetchRequest name="bigMeals" entity="Recipe" predicateString="serves &gt;= 10"/>
+    <elements>
+        <element name="Recipe" positionX="18" positionY="27" width="128" height="164"/>
+        <element name="RecipeIngredient" positionX="187" positionY="42" width="128" height="105"/>
+        <element name="Type" positionX="243" positionY="171" width="128" height="60"/>
+    </elements>
+</model>
