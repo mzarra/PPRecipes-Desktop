@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Author" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="author" inverseEntity="Recipe" indexed="YES" syncable="YES"/>
+    </entity>
     <entity name="Recipe" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
         <attribute name="serves" attributeType="Integer 16" minValueString="1" defaultValueString="1" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" defaultValueString="Meat" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" defaultValueString="Entrée" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="recipes" inverseEntity="Author" indexed="YES" syncable="YES"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="recipe" inverseEntity="RecipeIngredient" indexed="YES" syncable="YES"/>
-        <fetchedProperty name="Test" optional="YES" transient="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Type" predicateString="name == $FETCH_SOURCE.name"/>
-        </fetchedProperty>
     </entity>
     <entity name="RecipeIngredient" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
@@ -20,10 +23,10 @@
     <entity name="Type" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
-    <fetchRequest name="bigMeals" entity="Recipe" predicateString="serves >= 10"/>
     <elements>
-        <element name="RecipeIngredient" positionX="187" positionY="42" width="128" height="105"/>
-        <element name="Type" positionX="243" positionY="171" width="128" height="60"/>
-        <element name="Recipe" positionX="18" positionY="27" width="128" height="164"/>
+        <element name="RecipeIngredient" positionX="214" positionY="138" width="128" height="105"/>
+        <element name="Type" positionX="430" positionY="243" width="128" height="60"/>
+        <element name="Author" positionX="306" positionY="36" width="128" height="75"/>
+        <element name="Recipe" positionX="466" positionY="54" width="128" height="165"/>
     </elements>
 </model>

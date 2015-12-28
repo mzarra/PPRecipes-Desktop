@@ -11,7 +11,4 @@ import Cocoa
 
 class WindowController: NSWindowController {
 
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-        print("Fired")
-    }
 }

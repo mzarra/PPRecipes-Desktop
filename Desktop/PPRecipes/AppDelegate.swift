@@ -10,25 +10,25 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    let dataController = PPRDataController() {
-    }
+//    let dataController = PPRDataController() { (error) in
+//    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 //        guard let window = NSApplication.sharedApplication().mainWindow else {
-//            print("mainWindow is nil")
+//            fatalError("mainWindow is nil")
 //        }
 //        guard let controller = window.windowController else {
-//            print("windowController is nil")
+//            fatalError("windowController is nil")
 //        }
 //        if let view = controller.contentViewController as? ViewController {
 //            view.dataController = dataController
 //        } else {
-//            print("did not inject dataController")
+//            fatalError("did not inject dataController")
 //        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        dataController.saveContext()
+//        dataController.saveContext()
     }
 
     @IBAction func addImage(sender: AnyObject) {

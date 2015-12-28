@@ -18,10 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var fileToOpenURL: NSURL?
   var dataController: PPRDataController?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  //START:newAppDidFinish
+  func application(application: UIApplication, didFinishLaunchingWithOptions
+    launchOptions: [NSObject: AnyObject]?) -> Bool {
     dataController = PPRDataController() {
-      self.contextInitialized()
+      (inError) in
+      if let error = inError {
+        self.displayError(error)
+      } else {
+        self.contextInitialized()
+      }
     }
+    //END:newAppDidFinish
     guard let navController = window?.rootViewController as? UINavigationController else {
       fatalError("Root view controller is not a navigation controller")
     }
@@ -45,6 +53,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(application: UIApplication) {
     dataController?.saveContext()
   }
+
+  //START: criticalErrorDisplay
+  func displayError(error: NSError) {
+    var message = "The recipes database is either corrupt or was created by a"
+    message += " newer version of Grokking Recipes. Please contact support to"
+    message += " assist with this error. \n\(error.localizedDescription)"
+    let alert = UIAlertController(title: "Error", message: message,
+      preferredStyle: .Alert)
+    let close = UIAlertAction(title: "Close", style: .Cancel, handler: {
+      (action) in
+      //Probably terminate the application
+    })
+    alert.addAction(close)
+    if let controller = window?.rootViewController {
+      controller.presentViewController(alert, animated: true, completion: nil)
+    }
+  }
+  //END: criticalErrorDisplay
 
   //START:contextInitialized
   func contextInitialized() {

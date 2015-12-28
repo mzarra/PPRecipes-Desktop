@@ -15,77 +15,48 @@ class PPRDataController: NSObject {
   var mainContext: NSManagedObjectContext?
   var writerContext: NSManagedObjectContext?
   var persistenceInitialized = false
-  var initializationComplete: (() -> Void)?
+  var initializationComplete: ((NSError?) -> Void)?
 
-  init(completion: () -> Void) {
+  init(completion: (NSError?) -> Void) {
     super.init()
     initializationComplete = completion
     initializeCoreDataStack()
   }
 
-  func initializeCoreDataStackALT() {
-    //START:AsyncWriteInit
+  func initializeCoreDataStack() {
     guard let modelURL = NSBundle.mainBundle().URLForResource("PPRecipes",
       withExtension: "momd") else {
-      fatalError("Failed to locate DataModel.momd in app bundle")
+        fatalError("Failed to locate DataModel.momd in app bundle")
     }
     guard let mom = NSManagedObjectModel(contentsOfURL: modelURL) else {
       fatalError("Failed to initialize MOM")
     }
     let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
 
-    var type = NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType
-    writerContext = NSManagedObjectContext(concurrencyType: type)
-    writerContext?.persistentStoreCoordinator = psc
-
-    type = NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType
+    let type = NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType
     mainContext = NSManagedObjectContext(concurrencyType: type)
-    mainContext?.parentContext = writerContext
-    //END:AsyncWriteInit
-
-    let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-    dispatch_async(queue) {
-      let fileManager = NSFileManager.defaultManager()
-      guard let documentsURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
-        fatalError("Failed to resolve documents directory")
-      }
-      let storeURL = documentsURL.URLByAppendingPathComponent("PPRecipes.sqlite")
-
-      do {
-        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
-      } catch {
-        fatalError("Failed to initialize PSC: \(error)")
-      }
-      self.populateTypeEntities()
-      self.persistenceInitialized = true
-    }
-  }
-
-  func initializeCoreDataStack() {
-    guard let modelURL = NSBundle.mainBundle().URLForResource("PPRecipes", withExtension: "momd") else {
-      fatalError("Failed to locate DataModel.momd in app bundle")
-    }
-    guard let mom = NSManagedObjectModel(contentsOfURL: modelURL) else {
-      fatalError("Failed to initialize MOM")
-    }
-    let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-
-    mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
     mainContext?.persistentStoreCoordinator = psc
 
+    //START: MigrationOptions
     let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(queue) {
       let fileManager = NSFileManager.defaultManager()
-      guard let documentsURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
-        fatalError("Failed to resolve documents directory")
+      guard let documentsURL = fileManager.URLsForDirectory(.DocumentDirectory,
+        inDomains: .UserDomainMask).first else {
+          fatalError("Failed to resolve documents directory")
       }
       let storeURL = documentsURL.URLByAppendingPathComponent("PPRecipes.sqlite")
 
       do {
-        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
-      } catch {
-        fatalError("Failed to initialize PSC: \(error)")
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true,
+          NSInferMappingModelAutomaticallyOption: true]
+        try psc.addPersistentStoreWithType(NSSQLiteStoreType,
+          configuration: nil, URL: storeURL, options: options)
+      } catch let error as NSError {
+        assertionFailure("Failed to add persistent store: \(error)")
+        self.initializationComplete?(error)
       }
+      //END: MigrationOptions
       self.populateTypeEntities()
       self.persistenceInitialized = true
     }

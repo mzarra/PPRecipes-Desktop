@@ -2,24 +2,24 @@ import Cocoa
 import CoreData
 
 class ViewController: NSViewController {
-    var dataController: PPRDataController! {
-        didSet {
-            managedObjectContext = dataController.mainContext
-        }
-    }
-    var managedObjectContext: NSManagedObjectContext!
+  let dataController = PPRDataController() {  error in
+  }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewWillDisappear() {
+    dataController.saveContext()
+  }
 
-        // Do any additional setup after loading the view.
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    // Do any additional setup after loading the view.
+  }
+
+  override var representedObject: AnyObject? {
+    didSet {
+      // Update the view, if already loaded.
     }
+  }
 
 
 }

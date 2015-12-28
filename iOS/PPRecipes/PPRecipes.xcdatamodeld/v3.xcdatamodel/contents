@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D9c" minimumToolsVersion="Automatic">
+    <entity name="Author" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="author" inverseEntity="Recipe" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="exportRelationship" value="NO"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="Ingredient" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <attribute name="quantity" attributeType="Integer 16" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="ingredient" inverseEntity="RecipeIngredient" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="exportRelationship" value="NO"/>
+            </userInfo>
+        </relationship>
+        <relationship name="unitOfMeasure" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UnitOfMeasure" inverseName="ingredients" inverseEntity="UnitOfMeasure" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Recipe" representedClassName=".PPRRecipeMO" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <attribute name="serves" attributeType="Integer 16" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="type" attributeType="String" defaultValueString="Entrée" syncable="YES"/>
+        <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="recipes" inverseEntity="Author" indexed="YES" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="recipe" inverseEntity="RecipeIngredient" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="RecipeIngredient" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="quantity" attributeType="Integer 16" minValueString="0" defaultValueString="1" syncable="YES"/>
+        <relationship name="ingredient" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipes" inverseEntity="Ingredient" indexed="YES" syncable="YES"/>
+        <relationship name="recipe" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="exportRelationship" value="NO"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="Type" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UnitOfMeasure" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="untitled" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="unitOfMeasure" inverseEntity="Ingredient" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="exportRelationship" value="NO"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <elements>
+        <element name="Author" positionX="27" positionY="18" width="128" height="75"/>
+        <element name="Ingredient" positionX="387" positionY="18" width="128" height="120"/>
+        <element name="Recipe" positionX="205" positionY="18" width="128" height="165"/>
+        <element name="RecipeIngredient" positionX="207" positionY="246" width="128" height="90"/>
+        <element name="Type" positionX="27" positionY="117" width="128" height="60"/>
+        <element name="UnitOfMeasure" positionX="396" positionY="261" width="128" height="75"/>
+    </elements>
+</model>

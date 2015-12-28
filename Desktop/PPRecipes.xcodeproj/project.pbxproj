@@ -8,16 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		B6A832191C31B37800E2C310 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A832181C31B37800E2C310 /* WindowController.swift */; };
+		B6EE6E981C31C0D6007D06E2 /* PPRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6EE6E941C31C0D6007D06E2 /* PPRecipes.xcdatamodeld */; };
+		B6EE6E9A1C31C299007D06E2 /* PPRRecipeMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE6E991C31C299007D06E2 /* PPRRecipeMO.swift */; };
 		B6FB71DD1C2FA08900F5A989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB71DC1C2FA08900F5A989 /* AppDelegate.swift */; };
 		B6FB71DF1C2FA08900F5A989 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB71DE1C2FA08900F5A989 /* ViewController.swift */; };
 		B6FB71E11C2FA08900F5A989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FB71E01C2FA08900F5A989 /* Assets.xcassets */; };
 		B6FB71E41C2FA08900F5A989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6FB71E21C2FA08900F5A989 /* Main.storyboard */; };
 		B6FB71EE1C2FA0C800F5A989 /* PPRDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB71EB1C2FA0C800F5A989 /* PPRDataController.swift */; };
-		B6FB71EF1C2FA0C800F5A989 /* PPRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6FB71EC1C2FA0C800F5A989 /* PPRecipes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B6A832181C31B37800E2C310 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		B6EE6E951C31C0D6007D06E2 /* v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.xcdatamodel; sourceTree = "<group>"; };
+		B6EE6E961C31C0D6007D06E2 /* v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.xcdatamodel; sourceTree = "<group>"; };
+		B6EE6E971C31C0D6007D06E2 /* v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v3.xcdatamodel; sourceTree = "<group>"; };
+		B6EE6E991C31C299007D06E2 /* PPRRecipeMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPRRecipeMO.swift; path = ../iOS/PPRecipes/PPRRecipeMO.swift; sourceTree = "<group>"; };
 		B6FB71D91C2FA08900F5A989 /* PPRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FB71DC1C2FA08900F5A989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6FB71DE1C2FA08900F5A989 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +30,6 @@
 		B6FB71E31C2FA08900F5A989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6FB71E51C2FA08900F5A989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6FB71EB1C2FA0C800F5A989 /* PPRDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPRDataController.swift; path = ../iOS/PPRecipes/PPRDataController.swift; sourceTree = "<group>"; };
-		B6FB71ED1C2FA0C800F5A989 /* v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +50,9 @@
 				B6FB71DB1C2FA08900F5A989 /* PPRecipes */,
 				B6FB71DA1C2FA08900F5A989 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		B6FB71DA1C2FA08900F5A989 /* Products */ = {
 			isa = PBXGroup;
@@ -72,8 +78,9 @@
 		B6FB71F01C2FA0CE00F5A989 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B6EE6E991C31C299007D06E2 /* PPRRecipeMO.swift */,
+				B6EE6E941C31C0D6007D06E2 /* PPRecipes.xcdatamodeld */,
 				B6FB71EB1C2FA0C800F5A989 /* PPRDataController.swift */,
-				B6FB71EC1C2FA0C800F5A989 /* PPRecipes.xcdatamodeld */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -150,8 +157,9 @@
 			files = (
 				B6FB71DF1C2FA08900F5A989 /* ViewController.swift in Sources */,
 				B6A832191C31B37800E2C310 /* WindowController.swift in Sources */,
-				B6FB71EF1C2FA0C800F5A989 /* PPRecipes.xcdatamodeld in Sources */,
 				B6FB71EE1C2FA0C800F5A989 /* PPRDataController.swift in Sources */,
+				B6EE6E981C31C0D6007D06E2 /* PPRecipes.xcdatamodeld in Sources */,
+				B6EE6E9A1C31C299007D06E2 /* PPRRecipeMO.swift in Sources */,
 				B6FB71DD1C2FA08900F5A989 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,12 +306,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B6FB71EC1C2FA0C800F5A989 /* PPRecipes.xcdatamodeld */ = {
+		B6EE6E941C31C0D6007D06E2 /* PPRecipes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B6FB71ED1C2FA0C800F5A989 /* v1.xcdatamodel */,
+				B6EE6E951C31C0D6007D06E2 /* v1.xcdatamodel */,
+				B6EE6E961C31C0D6007D06E2 /* v2.xcdatamodel */,
+				B6EE6E971C31C0D6007D06E2 /* v3.xcdatamodel */,
 			);
-			currentVersion = B6FB71ED1C2FA0C800F5A989 /* v1.xcdatamodel */;
+			currentVersion = B6EE6E971C31C0D6007D06E2 /* v3.xcdatamodel */;
 			name = PPRecipes.xcdatamodeld;
 			path = ../iOS/PPRecipes/PPRecipes.xcdatamodeld;
 			sourceTree = "<group>";

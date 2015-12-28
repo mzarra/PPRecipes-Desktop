@@ -387,17 +387,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="805" height="444"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GGE-78-pde">
-                                <rect key="frame" x="20" y="402" width="143" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="143" id="7Hg-kS-suP"/>
-                                </constraints>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Zvc-Wl-F3v">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </searchFieldCell>
-                            </searchField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUk-X2-kxB">
                                 <rect key="frame" x="20" y="252" width="143" height="135"/>
                                 <clipView key="contentView" copiesOnScroll="NO" id="lSh-MA-I5K">
@@ -411,8 +400,8 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="138" minWidth="40" maxWidth="1000" id="lbv-X5-ed3">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <tableColumn editable="NO" width="138" minWidth="40" maxWidth="1000" id="lbv-X5-ed3">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -430,7 +419,7 @@
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhp-WZ-S3Q">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="jq7-If-Gi5">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Recipe Name" id="jq7-If-Gi5">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -443,7 +432,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                     <connections>
-                                                        <binding destination="vUe-iN-n98" name="value" keyPath="arrangedObjects.name" id="dnq-Wf-aah"/>
+                                                        <binding destination="hzq-jt-cqr" name="value" keyPath="arrangedObjects.name" id="PcY-4H-ghB"/>
                                                     </connections>
                                                 </tableColumn>
                                             </tableColumns>
@@ -507,14 +496,31 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="hzq-jt-cqr" name="value" keyPath="selection.name" id="ftc-ng-0LV">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFG-7B-L17">
                                 <rect key="frame" x="263" y="371" width="197" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HwT-gH-vtC">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="n8J-PX-SzQ">
+                                        <real key="minimum" value="0.0"/>
+                                    </numberFormatter>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="hzq-jt-cqr" name="value" keyPath="selection.serves" id="Nv8-JL-FYT">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-Hx-Ng8">
                                 <rect key="frame" x="261" y="338" width="202" height="26"/>
@@ -529,6 +535,11 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <binding destination="dkU-we-KJI" name="content" keyPath="arrangedObjects" id="jgK-p8-Tcx"/>
+                                    <binding destination="dkU-we-KJI" name="contentValues" keyPath="arrangedObjects.name" previousBinding="jgK-p8-Tcx" id="Idg-2k-OAa"/>
+                                    <binding destination="hzq-jt-cqr" name="selectedObject" keyPath="selection.type" previousBinding="Idg-2k-OAa" id="33g-oA-cRn"/>
+                                </connections>
                             </popUpButton>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0de-uv-0Dt">
                                 <rect key="frame" x="263" y="255" width="197" height="79"/>
@@ -536,7 +547,7 @@
                                     <rect key="frame" x="1" y="1" width="195" height="77"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Yhm-2D-72y">
+                                        <textView ambiguous="YES" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Yhm-2D-72y">
                                             <rect key="frame" x="0.0" y="0.0" width="195" height="77"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -545,6 +556,9 @@
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="195" height="77"/>
                                             <size key="maxSize" width="463" height="10000000"/>
+                                            <connections>
+                                                <binding destination="hzq-jt-cqr" name="value" keyPath="selection.desc" id="ocf-1S-HN8"/>
+                                            </connections>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -722,6 +736,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="add:" target="hzq-jt-cqr" id="XTB-7s-n5l"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-5n-vXd">
                                 <rect key="frame" x="49" y="226" width="21" height="19"/>
@@ -729,6 +746,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="remove:" target="hzq-jt-cqr" id="h9V-IB-ixx"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4z2-e5-qIW">
                                 <rect key="frame" x="17" y="188" width="444" height="22"/>
@@ -761,7 +781,32 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <binding destination="waU-Ku-xvP" name="content" keyPath="arrangedObjects" id="f9Q-cw-Bun"/>
+                                    <binding destination="waU-Ku-xvP" name="contentValues" keyPath="arrangedObjects.name" previousBinding="f9Q-cw-Bun" id="XXv-cB-fty"/>
+                                    <binding destination="hzq-jt-cqr" name="selectedObject" keyPath="selection.author" previousBinding="XXv-cB-fty" id="4dx-cl-2oE"/>
+                                </connections>
                             </popUpButton>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GGE-78-pde">
+                                <rect key="frame" x="20" y="402" width="143" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="7Hg-kS-suP"/>
+                                </constraints>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Zvc-Wl-F3v">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                                <connections>
+                                    <binding destination="hzq-jt-cqr" name="predicate" keyPath="filterPredicate.name" id="Pr0-D1-YFX">
+                                        <dictionary key="options">
+                                            <string key="NSDisplayName">predicate</string>
+                                            <string key="NSPredicateFormat">keyPath contains $value</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </searchField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="GGE-78-pde" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="1fF-PP-QDu"/>
@@ -798,9 +843,19 @@
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController mode="entity" entityName="Recipe" automaticallyPreparesContent="YES" id="vUe-iN-n98" userLabel="Recipes">
+                <arrayController mode="entity" entityName="Recipe" automaticallyPreparesContent="YES" id="hzq-jt-cqr" userLabel="Recipes">
                     <connections>
-                        <binding destination="XfG-lQ-9wD" name="managedObjectContext" keyPath="self.managedObjectContext" id="Q2c-3H-CJi"/>
+                        <binding destination="XfG-lQ-9wD" name="managedObjectContext" keyPath="self.dataController.mainContext" id="uTR-jr-IO8"/>
+                    </connections>
+                </arrayController>
+                <arrayController mode="entity" entityName="Type" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="dkU-we-KJI" userLabel="Type">
+                    <connections>
+                        <binding destination="XfG-lQ-9wD" name="managedObjectContext" keyPath="dataController.mainContext" id="meK-xN-FtW"/>
+                    </connections>
+                </arrayController>
+                <arrayController mode="entity" entityName="Author" automaticallyPreparesContent="YES" id="waU-Ku-xvP" userLabel="Authors">
+                    <connections>
+                        <binding destination="XfG-lQ-9wD" name="managedObjectContext" keyPath="dataController.mainContext" id="8US-LL-pac"/>
                     </connections>
                 </arrayController>
             </objects>

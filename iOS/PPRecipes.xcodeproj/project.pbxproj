@@ -25,6 +25,7 @@
 		B6812C341C16128E00223158 /* PPRSelectAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6812C331C16128E00223158 /* PPRSelectAuthorViewController.swift */; };
 		B6812C361C16371400223158 /* PPRDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6812C351C16371400223158 /* PPRDataController.swift */; };
 		B6812C3B1C163E0C00223158 /* PPRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6812C371C163E0C00223158 /* PPRecipes.xcdatamodeld */; };
+		B68FE37F1C1F6C0F0090E346 /* RecipeIngredientToIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FE37E1C1F6C0F0090E346 /* RecipeIngredientToIngredient.swift */; };
 		B6952BB41C1A5E0700480352 /* ExportImportHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6952BB31C1A5E0700480352 /* ExportImportHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		B6812C381C163E0C00223158 /* v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.xcdatamodel; sourceTree = "<group>"; };
 		B6812C391C163E0C00223158 /* v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.xcdatamodel; sourceTree = "<group>"; };
 		B6812C3A1C163E0C00223158 /* v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v3.xcdatamodel; sourceTree = "<group>"; };
+		B68FE37E1C1F6C0F0090E346 /* RecipeIngredientToIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeIngredientToIngredient.swift; sourceTree = "<group>"; };
 		B6952BB31C1A5E0700480352 /* ExportImportHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportImportHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				B6812C331C16128E00223158 /* PPRSelectAuthorViewController.swift */,
 				B6812C351C16371400223158 /* PPRDataController.swift */,
 				B6952BB31C1A5E0700480352 /* ExportImportHandler.swift */,
+				B68FE37E1C1F6C0F0090E346 /* RecipeIngredientToIngredient.swift */,
 			);
 			path = PPRecipes;
 			sourceTree = "<group>";
@@ -145,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B6812BFB1C14E4AA00223158 /* Build configuration list for PBXProject "iOS" */;
+			buildConfigurationList = B6812BFB1C14E4AA00223158 /* Build configuration list for PBXProject "PPRecipes" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -196,6 +199,7 @@
 				B6812C041C14E4AA00223158 /* AppDelegate.swift in Sources */,
 				B6812C2E1C15244400223158 /* PPRMasterViewController.swift in Sources */,
 				B6812C201C1500C700223158 /* PPRSelectIngredientTypeViewController.swift in Sources */,
+				B68FE37F1C1F6C0F0090E346 /* RecipeIngredientToIngredient.swift in Sources */,
 				B6812C301C15246C00223158 /* PPRDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B6812BFB1C14E4AA00223158 /* Build configuration list for PBXProject "iOS" */ = {
+		B6812BFB1C14E4AA00223158 /* Build configuration list for PBXProject "PPRecipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6812C101C14E4AA00223158 /* Debug */,
@@ -348,7 +352,7 @@
 				B6812C391C163E0C00223158 /* v2.xcdatamodel */,
 				B6812C3A1C163E0C00223158 /* v3.xcdatamodel */,
 			);
-			currentVersion = B6812C381C163E0C00223158 /* v1.xcdatamodel */;
+			currentVersion = B6812C3A1C163E0C00223158 /* v3.xcdatamodel */;
 			path = PPRecipes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
