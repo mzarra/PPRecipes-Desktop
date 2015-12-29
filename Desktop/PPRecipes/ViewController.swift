@@ -4,6 +4,7 @@ import CoreData
 class ViewController: NSViewController {
   let dataController = PPRDataController() {  error in
   }
+  @IBOutlet var recipeArrayController: NSArrayController?
 
   override func viewWillDisappear() {
     dataController.saveContext()
